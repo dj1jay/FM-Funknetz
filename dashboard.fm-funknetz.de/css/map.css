@@ -1,0 +1,121 @@
+:root { color-scheme: light dark; }
+    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background:#0b0c10; color:#e5e7eb; }
+    header { display:flex; justify-content:space-between; align-items:center; gap:12px; padding:10px 16px; background:#111827; border-bottom:1px solid #374151; }
+    h1 { margin:0; font-size:20px; }
+    .muted { color:#9ca3af; font-size:12px; }
+    #map { width:100%; height: calc(100vh - 64px); }
+    .controls {
+      position:absolute; top:80px; right:12px; z-index:500;
+      background:#0f172a; border:1px solid #1f2937; border-radius:8px; padding:10px 12px; font-size:12px;
+      box-shadow: 0 6px 24px rgba(0,0,0,.25); width: 250px;
+    }
+    .controls label { display:flex; align-items:center; gap:6px; margin:3px 0; white-space:nowrap; }
+    .leaflet-container a { color:#60a5fa; }
+    .toggle { font-size:12px; border:1px solid #374151; background:#1f2937; color:#e5e7eb; padding:4px 8px; border-radius:6px; cursor:pointer; }
+    .lbl { background: rgba(0,0,0,0.6); color:#fff; padding:2px 4px; border-radius:4px; font-size:11px; }
+    .popup-row { display:flex; justify-content:space-between; gap:8px; }
+    .popup-key { color:#6b7280; min-width:80px; }
+    .popup-val { color:#111827; }
+    .leaflet-popup-content-wrapper { background:#ffffff; color:#111827; }
+    .leaflet-popup-tip { background:#ffffff; }
+    .search-wrap { margin-bottom:8px; }
+    .search-wrap input[type="text"] {
+      width:90%; padding:6px 8px; border-radius:6px; border:1px solid #1f2937;
+      background:#0b1220; color:#e5e7eb; outline:none;
+    }
+    .search-actions { display:flex; gap:6px; align-items:center; margin-top:6px; }
+    .btn {
+      border:1px solid #374151; background:#1f2937; color:#e5e7eb; padding:4px 8px; border-radius:6px; cursor:pointer; font-size:12px;
+    }
+    .hint { font-size:11px; color:#9ca3af; margin-top:4px; }
+
+:root[data-theme="light"] {
+  /* Grundflächen */
+
+search-actions { display:flex; gap:6px; align-items:center; margin-top:6px; }
+    .btn {
+      border:1px solid #374151; background:#1f2937; color:#e5e7eb; padding:4px 8px; border-radius:6px; cursor:pointer; font-size:12px;
+    }
+  /* Chips/Buttons */
+/*  --chip-bg:    #A0B0BB;
+  --chip-bg:	#e5e7ed;
+  --chip-border:#3F4B5A;
+
+  --btn-bg:     #1f2937;
+  --btn-border: #3F4B5A;
+  --btn-hover:  #1f2937;
+
+  /* Tabellenlinie innen 
+  --table-row:  #B6C1CB;
+
+  /* Header-Gradient */
+  --header-start: #C07700;
+  --header-end:   #F3A500;
+*/
+  color-scheme: light;
+}
+
+
+/* ---------- Header: orange Balken wie im Screenshot ---------- */
+:root[data-theme="light"] header {
+  background: linear-gradient(180deg, var(--header-start), var(--header-end));
+  color: #1b1300;
+  border-bottom: 2px solid rgba(0,0,0,.18);
+}
+
+/* Pill-Buttons in der Headerzeile */
+:root[data-theme="light"] .pill {
+  background: #FFB74D;
+  border: 1px solid #CC8400;
+  color: #000000;
+  font-weight: 700;
+}
+
+/* Schaltflächen allgemein */
+:root[data-theme="light"] button,
+:root[data-theme="light"] .btn,
+:root[data-theme="light"] .theme-toggle {
+  background: var(--btn-bg);
+  border: 1px solid var(--btn-border);
+  color: #e5e7eb;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.25);
+}
+:root[data-theme="light"] button:hover,
+:root[data-theme="light"] .btn:hover,
+:root[data-theme="light"] .theme-toggle:hover {
+  background: var(--btn-hover);
+}
+
+
+
+
+/* -------- Header / Layout -------- */
+header {
+  display:flex; gap:12px; align-items:center; justify-content:space-between;
+  padding:14px 16px; background:var(--bg-elev); border-bottom:1px solid var(--border);
+  position: sticky; top:0; z-index:5;
+}
+h1 { margin:0; font-size:25px; }
+.row { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+main { padding:16px; max-width:1200px; margin:0 auto; }
+.grid { display:grid; gap:12px; grid-template-columns: 1fr 1fr; }
+@media (max-width: 900px) { .grid { grid-template-columns: 1fr; } } 
+
+/* -------- Pills / Buttons -------- bleibt Button Header*/
+.pill {
+  padding:4px 10px; border-radius:999px; background:var(--bg-muted);
+  font-size:12px; border:1px solid var(--border);
+}
+.ok { color: var(--ok); }
+.warn { color: var(--warn); }
+.bad { color: var(--bad); }
+
+button, .btn, .theme-toggle {
+  background: var(--btn-bg); border:1px solid var(--btn-border); color: var(--text);
+  padding:6px 10px; border-radius:8px; cursor:pointer; font-size:14px;
+}
+button:hover, .btn:hover, .theme-toggle:hover { background: var(--btn-hover); }
+button:disabled { opacity:.1; cursor:not-allowed; } 
+
+
+}

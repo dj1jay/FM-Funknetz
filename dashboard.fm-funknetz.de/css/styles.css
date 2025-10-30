@@ -1,0 +1,537 @@
+/* ======================= FM-Funknetz – Global Styles =======================
+   Zentrale Variablen + Komponenten für index.html, livemap.html, node.html
+   Light/Dark per :root[data-theme="light"|"dark"] gesteuert
+============================================================================ */
+
+/* -------- Theme Vars (Dark default) -------- */
+:root {
+  --bg: #0b0c10;
+  --bg-elev: #111827;
+  --bg-muted: #1f2937;
+  --border: #374151;
+  --text: #e5e7eb;
+  --text-muted: #9ca3af;
+  --accent: #38bdf8;
+
+  --ok: #10b981;
+  --warn: #f59e0b;
+  --bad: #ef4444;
+
+  --chip-bg: #1f2937;
+  --chip-border: #374151;
+
+  --btn-bg: #1f2937;
+  --btn-border: #374151;
+  --btn-hover: #253043;
+
+  --table-row: #1f2937;
+
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  /* Grundflächen */
+  --bg:        #DEE3EA;   /* Seitenhintergrund (helles Grau) */
+  --bg-elev:   #CFD6DE;   /* Kartenfläche (dunkler als bg) */
+  --bg-muted:  #A9B5BF;   /* Buttons/Pills Grund */
+  --border:    #3F4B5A;   /* Stahlblau-Rahmen wie im Screenshot */
+
+  /* Text */
+  --text:         #0B0F14;  /* fast Schwarz */
+  --text-muted:   #2F3A47;
+  --accent:       #0ea5e9;  /* Links */
+
+  /* Statusfarben */
+  --ok:   #10b981;  /* grün */
+  --warn: #d97706;  /* amber */
+  --bad:  #dc2626;  /* rot */
+
+  /* Chips/Buttons */
+  --chip-bg:    #A0B0BB;
+  --chip-border:#3F4B5A;
+
+  --btn-bg:     #A9B5BF;
+  --btn-border: #3F4B5A;
+  --btn-hover:  #9AA6B1;
+
+  /* Tabellenlinie innen */
+  --table-row:  #B6C1CB;
+
+  /* Header-Gradient */
+  --header-start: #C07700;
+  --header-end:   #F3A500;
+
+  color-scheme: light;
+}
+
+/* ---------- Header: orange Balken wie im Screenshot ---------- */
+:root[data-theme="light"] header {
+  background: linear-gradient(180deg, var(--header-start), var(--header-end));
+  color: #1b1300;
+  border-bottom: 2px solid rgba(0,0,0,.18);
+}
+
+/* Pill-Buttons in der Headerzeile */
+:root[data-theme="light"] .pill {
+  background: #FFB74D;
+  border: 1px solid #CC8400;
+  color: #1b1300;
+  font-weight: 700;
+}
+
+/* Schaltflächen allgemein */
+:root[data-theme="light"] button,
+:root[data-theme="light"] .btn,
+:root[data-theme="light"] .theme-toggle {
+  background: var(--btn-bg);
+  border: 1px solid var(--btn-border);
+  color: #0B0F14;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.25);
+}
+:root[data-theme="light"] button:hover,
+:root[data-theme="light"] .btn:hover,
+:root[data-theme="light"] .theme-toggle:hover {
+  background: var(--btn-hover);
+}
+
+/* ---------- Karten/Container: kühles Grau, klare Kontur ---------- */
+:root[data-theme="light"] .card {
+  background: var(--bg-elev);
+  border: 2px solid var(--border);
+  border-radius: 18px;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.25),
+    0 2px 6px rgba(0,0,0,.06);
+}
+:root[data-theme="light"] .card h2 {
+  border-bottom: 1px solid rgba(63,75,90,.6);
+  color: #101828;
+}
+
+/* Tabellen-Rahmenlinien etwas deutlicher, aber dezent */
+:root[data-theme="light"] th,
+:root[data-theme="light"] td {
+  border-bottom: 1px solid var(--table-row);
+  color: #0B0F14;
+}
+
+/* ---------- Chips/Tags (TG-Anzeige) ---------- */
+:root[data-theme="light"] .tag {
+  background: var(--chip-bg);
+  border: 1px solid var(--chip-border);
+  color: #FFFFFF;            /* lesbar auf kühlem Grau */
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 4px 10px;
+}
+
+/* ---------- Nodes: pillige Kacheln mit weißer Schrift ---------- */
+:root[data-theme="light"] .node-btn {
+  background: #8EA1AD;       /* bluish grey */
+  border: 1px solid #324250; /* dunkler Rahmen */
+  color: #FFFFFF;
+  border-radius: 18px;
+  min-height: 64px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.25);
+}
+:root[data-theme="light"] .node-btn:hover {
+  background: #879CAA;
+}
+:root[data-theme="light"] .node-btn .meta {
+  color: #F1F5F9;            /* helles Grau auf bluish */
+}
+
+/* Aktive TG-Chips in Kacheln werden von JS eingefärbt.
+   Inaktiv: graue Badge, damit’s wie im Screenshot wirkt. */
+:root[data-theme="light"] .alt-muted .alt-tg {
+  background: #D1D8DE;
+  border-color: #99A7B3;
+  color: #364250;
+}
+
+/* ---------- Alternative Ansicht: selbe Optik ---------- */
+:root[data-theme="light"] .alt-btn {
+  background: var(--bg-elev);
+  border: 1px solid var(--btn-border);
+  color: #0B0F14;
+  border-radius: 16px;
+}
+:root[data-theme="light"] .alt-call { color: #0B0F14; }
+
+/* ---------- Filterleiste/Selects auf kühles Grau ---------- */
+:root[data-theme="light"] select.filter-select {
+  background: #E4E9F0;
+  color: #0B0F14;
+  border: 1px solid var(--btn-border);
+}
+:root[data-theme="light"] .tg-clear {
+  background: #FFE6CC;
+  border-color: #D97706;
+  color: #7C3D00;
+}
+
+/* ---------- Feinheiten ---------- */
+:root[data-theme="light"] a { color: #0B6FAE; }
+:root[data-theme="light"] .small,
+:root[data-theme="light"] .muted { color: #2F3A47; }
+:root[data-theme="light"] .node-btn.active { outline: 2px solid rgba(16,185,129,.25); }
+
+/* ---------- Kompakte Ansicht (Alternative View) Kontrastfix ---------- */
+:root[data-theme="light"] .alt-btn {
+  background: #D4DAE0;                  /* helles Grau, leicht kontrastierend */
+  border: 1px solid #47515C;
+  color: #0B0F14;
+  border-radius: 16px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.3),
+              0 1px 3px rgba(0,0,0,.12);
+}
+
+:root[data-theme="light"] .alt-call {
+  color: #111827;
+  font-weight: 800;
+}
+
+/* TG-Chip farbig + kontrastreich */
+:root[data-theme="light"] .alt-tg {
+  background: #6B7784;                  /* dunkleres Blau-Grau für hellen Mode */
+  color: #FFFFFF;                       /* Weiß für Lesbarkeit */
+  border: 2px solid #38404A;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.25);
+  font-weight: 700;
+  padding: 4px 12px;
+}
+
+/* Wenn inaktiv (grau) → etwas heller, aber immer sichtbar */
+:root[data-theme="light"] .alt-muted .alt-tg {
+  background: #B8C0C8;
+  color: #1E252D;
+  border-color: #7B858F;
+}
+
+/* Hover-Effekt für bessere Wahrnehmung */
+:root[data-theme="light"] .alt-btn:hover {
+  background: #C9D0D7;
+  transform: translateY(-1px);
+}
+/* Lighte ende */
+/* -------- Base / Reset -------- */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 14px/1.45 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+.small { font-size: 12px; color: var(--text-muted); }
+.muted { color: var(--text-muted); }
+
+/* -------- Header / Layout -------- */
+header {
+  display:flex; gap:12px; align-items:center; justify-content:space-between;
+  padding:14px 16px; background:var(--bg-elev); border-bottom:1px solid var(--border);
+  position: sticky; top:0; z-index:5;
+}
+h1 { margin:0; font-size:25px; }
+.row { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+main { padding:16px; max-width:1200px; margin:0 auto; }
+.grid { display:grid; gap:12px; grid-template-columns: 1fr 1fr; }
+@media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+
+/* -------- Pills / Buttons -------- */
+.pill {
+  padding:4px 10px; border-radius:999px; background:var(--bg-muted);
+  font-size:12px; border:1px solid var(--border);
+}
+.ok { color: var(--ok); }
+.warn { color: var(--warn); }
+.bad { color: var(--bad); }
+
+button, .btn, .theme-toggle {
+  background: var(--btn-bg); border:1px solid var(--btn-border); color: var(--text);
+  padding:6px 10px; border-radius:8px; cursor:pointer; font-size:14px;
+}
+button:hover, .btn:hover, .theme-toggle:hover { background: var(--btn-hover); }
+button:disabled { opacity:.6; cursor:not-allowed; }
+
+/* -------- Cards / Tables -------- */
+.card { background: var(--bg-elev); border:1px solid var(--border); border-radius:12px; overflow:hidden; }
+.card h2 { margin:0; font-size:15px; padding:10px 12px; border-bottom:1px solid var(--border); }
+.card .body { padding:12px; }
+
+table { width:100%; border-collapse: collapse; }
+th, td { padding:8px; border-bottom:1px solid var(--table-row); text-align:left; }
+th { font-weight:600; font-size:13px; }
+td { font-size:13px; }
+.tag {
+  font-size:12px; background:var(--chip-bg); border:1px solid var(--chip-border);
+  padding:2px 6px; border-radius:999px;
+}
+.call { font-weight:700; }
+
+/* -------- Top toolbar (Checkboxes) -------- */
+.top-toolbar { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:12px; }
+.top-toolbar label { font-size:13px; color:var(--text-muted); }
+
+/* -------- Nodes Grid -------- */
+.nodes-grid { display:grid; gap:8px; grid-template-columns: repeat(10, 1fr); }
+@media (max-width: 1400px){ .nodes-grid{ grid-template-columns: repeat(8,1fr); } }
+@media (max-width: 1200px){ .nodes-grid{ grid-template-columns: repeat(6,1fr); } }
+@media (max-width: 1000px){ .nodes-grid{ grid-template-columns: repeat(5,1fr); } }
+@media (max-width: 800px) { .nodes-grid{ grid-template-columns: repeat(4,1fr); } }
+@media (max-width: 640px) { .nodes-grid{ grid-template-columns: repeat(3,1fr); } }
+@media (max-width: 520px) { .nodes-grid{ grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 360px) { .nodes-grid{ grid-template-columns: 1fr; } }
+
+.node-btn {
+  display:flex; flex-direction:column; align-items:center; gap:4px;
+  border:1px solid var(--border); background:var(--bg-muted); color:var(--text);
+  justify-content:center; padding:10px 12px; border-radius:10px; cursor:pointer;
+  min-height:64px; text-align:center;
+}
+.node-btn:hover { background: var(--btn-hover); }
+.node-btn.active { outline:2px solid color-mix(in oklab, var(--ok) 20%, transparent); }
+.node-btn .call { font-weight:700; font-size:14px; }
+.node-btn .meta { font-size:12px; color:var(--text-muted); display:flex; gap:8px; flex-wrap:wrap; justify-content:center; }
+
+/* -------- Filterleiste in Nodes-Card -------- */
+.nodes-toolbar { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:10px; }
+.nodes-toolbar label { font-size:13px; color:var(--text-muted); }
+select.filter-select {
+  background:var(--bg); color:var(--text); border:1px solid var(--btn-border); border-radius:8px;
+  padding:6px 10px; font-size:14px; min-width:200px;
+}
+.tg-clear { background:var(--btn-bg); border:1px solid var(--bad); color: var(--bad); }
+
+/* -------- Alternative Ansicht (deine Basis) -------- */
+.alt-grid { display:grid; gap:10px; grid-template-columns: repeat(7,1fr); }
+@media (max-width: 1100px){ .alt-grid{ grid-template-columns: repeat(4,1fr); } }
+@media (max-width: 900px){ .alt-grid{ grid-template-columns: repeat(3,1fr); } }
+@media (max-width: 650px){ .alt-grid{ grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 420px){ .alt-grid{ grid-template-columns: 1fr; } }
+
+.alt-btn {
+  display:flex; flex-direction:column; align-items:center; gap:6px;
+  padding:12px; border-radius:12px; background:var(--bg); border:1px solid var(--btn-border);
+  min-height:88px; text-align:center; transition: transform .15s ease;
+}
+.alt-btn:hover { transform: translateY(0); }
+.alt-call { font-weight:800; font-size:12px; letter-spacing:.4px; }
+.alt-tg { display:inline-block; padding:4px 14px; border-radius:999px; font-weight:700; border:2px solid var(--chip-border); }
+.alt-muted { opacity:.55; }
+.alt-legend { font-size:14px; color:var(--text-muted); }
+
+/* -------- Node-Detail Blöcke -------- */
+.box { background: var(--bg); border:1px solid var(--btn-border); border-radius:10px; padding:12px; }
+.section-title { margin:6px 0 8px; font-size:15px; font-weight:700; display:flex; justify-content:space-between; align-items:center; }
+.list-inline { display:flex; gap:6px; flex-wrap:wrap; }
+.chip { display:inline-block; padding:2px 10px; border-radius:999px; border:1px solid var(--chip-border); background:var(--chip-bg); font-weight:600; }
+.chip-strong { font-weight:700; border-color:#60a5fa; background:rgba(96,165,250,.2); color:#60a5fa; }
+.toggle { font-size:12px; }
+
+/* -------- Leaflet Feinheiten (Farben an Theme binden) -------- */
+.leaflet-container a { color: var(--accent); }
+.leaflet-popup-content-wrapper { background: var(--bg-elev); color: var(--text); border:1px solid var(--border); }
+.leaflet-popup-tip { background: var(--bg-elev); }
+.lbl { background: rgba(0,0,0,0.6); color:#fff; padding:2px 4px; border-radius:4px; font-size:11px; }
+:root[data-theme="light"] .lbl { background: rgba(0,0,0,0.55); }
+
+
+/* Talker: aktive Buttons */
+.talker-active-grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(4, minmax(140px, 1fr));
+}
+@media (max-width: 900px){ .talker-active-grid{ grid-template-columns: repeat(2, minmax(140px, 1fr)); } }
+@media (max-width: 520px){ .talker-active-grid{ grid-template-columns: 1fr; } }
+
+.talker-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--btn-border);
+  background: var(--bg-elev);
+  color: var(--text);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.2);
+}
+.talker-call {
+  font-weight: 800;
+  letter-spacing: .3px;
+  font-size: 14px;
+}
+.talker-tg {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 2px solid #16a34a; /* grün */
+  color: #16a34a;
+  background: rgba(22,163,74,.18);
+  font-weight: 700;
+  font-size: 12px;
+}
+:root[data-theme="light"] .talker-btn { background: #D4DAE0; border-color: #47515C; }
+:root[data-theme="light"] .talker-tg { border-color: #1f8f4a; color:#1f8f4a; background: rgba(31,143,74,.18); }
+/* Tabellenähnliche Darstellung für Node-Infos */
+.kvtable {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.kvtable > div {
+  display: grid;
+  grid-template-columns: 160px 1fr; /* linke Spalte fix, rechte flexibel */
+  gap: 8px;
+  align-items: baseline;
+}
+
+.kvtable .key {
+  font-weight: 700;
+  text-align: right;
+  color: var(--text);
+}
+
+.kvtable span:not(.key) {
+  color: var(--text-muted, #cbd5e1);
+  word-break: break-word;
+}
+
+/* etwas mehr Luft zwischen Abschnitten */
+.box .kvtable + .kvtable { margin-top: 10px; }
+
+:root[data-theme="light"] .kvtable .key {
+  color: #111827;
+}
+:root[data-theme="light"] .kvtable span:not(.key) {
+  color: #374151;
+}
+
+/* mobile Darstellung: untereinander */
+@media (max-width: 600px) {
+  .kvtable > div {
+    grid-template-columns: 1fr;
+  }
+  .kvtable .key {
+    text-align: left;
+  }
+/* =========================
+   Alternative Ansicht (Client-Buttons)
+   ========================= */
+
+/* Basis-Grid bleibt wie bei dir */
+.alt-grid { display:grid; gap:10px; grid-template-columns: repeat(7,1fr); }
+@media (max-width: 1100px){ .alt-grid{ grid-template-columns: repeat(4,1fr); } }
+@media (max-width: 900px){ .alt-grid{ grid-template-columns: repeat(3,1fr); } }
+@media (max-width: 650px){ .alt-grid{ grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 420px){ .alt-grid{ grid-template-columns: 1fr; } }
+
+/* Theme-Variablen speziell für die Alt-Ansicht */
+:root {
+  --alt-card-bg:    #0f172a;         /* dunkles Karten-Panel */
+  --alt-border:     #334155;         /* kühles Grau */
+  --alt-text:       #e5e7eb;         /* fast weiß */
+  --alt-muted:      #9ca3af;         /* helles Grau */
+  --chip-border:    #475569;
+  --chip-bg:        rgba(148,163,184,.14);
+  --chip-text:      #e5e7eb;
+
+  /* inaktive TG */
+  --tg-off-bg:      rgba(148,163,184,.10);
+  --tg-off-text:    #cbd5e1;
+}
+
+/* Light-Theme-Kontraste */
+:root[data-theme="light"] {
+  --alt-card-bg:    #ffffff;         /* helles Panel */
+  --alt-border:     #cbd5e1;         /* helles Grau */
+  --alt-text:       #111827;         /* fast schwarz */
+  --alt-muted:      #4b5563;         /* dunkleres Grau */
+  --chip-border:    #64748b;
+  --chip-bg:        rgba(2,6,23,.06);/* sehr zartes Dunkelblau/Grau */
+  --chip-text:      #111827;
+
+  --tg-off-bg:      rgba(15,23,42,.08);
+  --tg-off-text:    #374151;
+}
+
+/* Karten */
+.alt-btn {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+  padding:12px;
+  border-radius:12px;
+  background: var(--alt-card-bg);
+  border: 1px solid var(--alt-border);
+  min-height: 88px;
+  text-align:center;
+  transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+  color: var(--alt-text);
+  box-shadow: 0 1px 0 rgba(0,0,0,.04);
+}
+.alt-btn:hover { transform: translateY(-1px); }
+.alt-btn:focus-visible {
+  outline: 2px solid color-mix(in oklab, var(--alt-text) 30%, transparent);
+  outline-offset: 2px;
+}
+
+/* Texte */
+.alt-call {
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: .4px;
+  color: var(--alt-text);
+}
+.alt-legend { font-size: 10px; color: var(--alt-muted); }
+
+/* TG-Chips: immer kontrastreich */
+.alt-tg {
+  display:inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1.5px solid var(--chip-border);
+  background: var(--chip-bg);
+  color: var(--chip-text);
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+/* Inaktiv (Stop) -> deutlicher Grau-Falloff */
+.alt-muted .alt-tg,
+.alt-tg.is-off {
+  background: var(--tg-off-bg);
+  color: var(--tg-off-text);
+  border-color: color-mix(in oklab, var(--tg-off-text) 60%, var(--chip-border));
+  opacity: .85;
+}
+
+/* Aktive TG-Farben vom JS (inline style) bekommen zusätzlich besseren Kontrast */
+.alt-tg[data-active="1"] {
+  /* falls JS nur textColor setzt: sicher Kontrast erhöhen */
+  text-shadow: 0 0 0.01px currentColor; /* subpixel hinting */
+}
+
+/* Optional: leichte Badge-Schattierung für aktive TG */
+:root[data-theme="light"] .alt-tg[data-active="1"] {
+  box-shadow: inset 0 0 0 999px color-mix(in oklab, currentColor 10%, transparent);
+}
+:root[data-theme="dark"] .alt-tg[data-active="1"] {
+  box-shadow: inset 0 0 0 999px color-mix(in oklab, currentColor 18%, transparent);
+}
+
+/* Wenn du mehrere TG-Chips in einem Button stapelst */
+.alt-tg + .alt-tg { margin-left: 6px; }
+
+/* Für Buttons, die komplett „alt-muted“ sind (kein aktives Audio) */
+.alt-btn.alt-muted { opacity: .8; }

@@ -1,0 +1,182 @@
+/* ======================= FM-Funknetz – Global Styles =======================
+   Zentrale Variablen + Komponenten für index.html, livemap.html, node.html
+   Light/Dark per :root[data-theme="light"|"dark"] gesteuert
+============================================================================ */
+
+/* -------- Theme Vars (Dark default) -------- */
+:root {
+  --bg: #0b0c10;
+  --bg-elev: #111827;
+  --bg-muted: #1f2937;
+  --border: #374151;
+  --text: #e5e7eb;
+  --text-muted: #9ca3af;
+  --accent: #38bdf8;
+
+  --ok: #10b981;
+  --warn: #f59e0b;
+  --bad: #ef4444;
+
+  --chip-bg: #1f2937;
+  --chip-border: #374151;
+
+  --btn-bg: #1f2937;
+  --btn-border: #374151;
+  --btn-hover: #253043;
+
+  --table-row: #1f2937;
+
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --bg: #f6f7fb;
+  --bg-elev: #ffffff;
+  --bg-muted: #f1f5f9;
+  --border: #d1d5db;
+  --text: #0f172a;
+  --text-muted: #475569;
+  --accent: #0ea5e9;
+
+  --ok: #10b981;
+  --warn: #d97706;
+  --bad: #dc2626;
+
+  --chip-bg: #eef2f7;
+  --chip-border: #d1d5db;
+
+  --btn-bg: #eef2f7;
+  --btn-border: #cbd5e1;
+  --btn-hover: #e2e8f0;
+
+  --table-row: #f8fafc;
+
+  color-scheme: light;
+}
+
+/* -------- Base / Reset -------- */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 14px/1.45 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+.small { font-size: 12px; color: var(--text-muted); }
+.muted { color: var(--text-muted); }
+
+/* -------- Header / Layout -------- */
+header {
+  display:flex; gap:12px; align-items:center; justify-content:space-between;
+  padding:14px 16px; background:var(--bg-elev); border-bottom:1px solid var(--border);
+  position: sticky; top:0; z-index:5;
+}
+h1 { margin:0; font-size:25px; }
+.row { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+main { padding:16px; max-width:1200px; margin:0 auto; }
+.grid { display:grid; gap:12px; grid-template-columns: 1fr 1fr; }
+@media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+
+/* -------- Pills / Buttons -------- */
+.pill {
+  padding:4px 10px; border-radius:999px; background:var(--bg-muted);
+  font-size:12px; border:1px solid var(--border);
+}
+.ok { color: var(--ok); }
+.warn { color: var(--warn); }
+.bad { color: var(--bad); }
+
+button, .btn, .theme-toggle {
+  background: var(--btn-bg); border:1px solid var(--btn-border); color: var(--text);
+  padding:6px 10px; border-radius:8px; cursor:pointer; font-size:14px;
+}
+button:hover, .btn:hover, .theme-toggle:hover { background: var(--btn-hover); }
+button:disabled { opacity:.6; cursor:not-allowed; }
+
+/* -------- Cards / Tables -------- */
+.card { background: var(--bg-elev); border:1px solid var(--border); border-radius:12px; overflow:hidden; }
+.card h2 { margin:0; font-size:15px; padding:10px 12px; border-bottom:1px solid var(--border); }
+.card .body { padding:12px; }
+
+table { width:100%; border-collapse: collapse; }
+th, td { padding:8px; border-bottom:1px solid var(--table-row); text-align:left; }
+th { font-weight:600; font-size:13px; }
+td { font-size:13px; }
+.tag {
+  font-size:12px; background:var(--chip-bg); border:1px solid var(--chip-border);
+  padding:2px 6px; border-radius:999px;
+}
+.call { font-weight:700; }
+
+/* -------- Top toolbar (Checkboxes) -------- */
+.top-toolbar { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:12px; }
+.top-toolbar label { font-size:13px; color:var(--text-muted); }
+
+/* -------- Nodes Grid -------- */
+.nodes-grid { display:grid; gap:8px; grid-template-columns: repeat(10, 1fr); }
+@media (max-width: 1400px){ .nodes-grid{ grid-template-columns: repeat(8,1fr); } }
+@media (max-width: 1200px){ .nodes-grid{ grid-template-columns: repeat(6,1fr); } }
+@media (max-width: 1000px){ .nodes-grid{ grid-template-columns: repeat(5,1fr); } }
+@media (max-width: 800px) { .nodes-grid{ grid-template-columns: repeat(4,1fr); } }
+@media (max-width: 640px) { .nodes-grid{ grid-template-columns: repeat(3,1fr); } }
+@media (max-width: 520px) { .nodes-grid{ grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 360px) { .nodes-grid{ grid-template-columns: 1fr; } }
+
+.node-btn {
+  display:flex; flex-direction:column; align-items:center; gap:4px;
+  border:1px solid var(--border); background:var(--bg-muted); color:var(--text);
+  justify-content:center; padding:10px 12px; border-radius:10px; cursor:pointer;
+  min-height:64px; text-align:center;
+}
+.node-btn:hover { background: var(--btn-hover); }
+.node-btn.active { outline:2px solid color-mix(in oklab, var(--ok) 20%, transparent); }
+.node-btn .call { font-weight:700; font-size:14px; }
+.node-btn .meta { font-size:12px; color:var(--text-muted); display:flex; gap:8px; flex-wrap:wrap; justify-content:center; }
+
+/* -------- Filterleiste in Nodes-Card -------- */
+.nodes-toolbar { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:10px; }
+.nodes-toolbar label { font-size:13px; color:var(--text-muted); }
+select.filter-select {
+  background:var(--bg); color:var(--text); border:1px solid var(--btn-border); border-radius:8px;
+  padding:6px 10px; font-size:14px; min-width:200px;
+}
+.tg-clear { background:var(--btn-bg); border:1px solid var(--bad); color: var(--bad); }
+
+/* -------- Alternative Ansicht (deine Basis) -------- */
+.alt-grid { display:grid; gap:10px; grid-template-columns: repeat(7,1fr); }
+@media (max-width: 1100px){ .alt-grid{ grid-template-columns: repeat(4,1fr); } }
+@media (max-width: 900px){ .alt-grid{ grid-template-columns: repeat(3,1fr); } }
+@media (max-width: 650px){ .alt-grid{ grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 420px){ .alt-grid{ grid-template-columns: 1fr; } }
+
+.alt-btn {
+  display:flex; flex-direction:column; align-items:center; gap:6px;
+  padding:12px; border-radius:12px; background:var(--bg); border:1px solid var(--btn-border);
+  min-height:88px; text-align:center; transition: transform .15s ease;
+}
+.alt-btn:hover { transform: translateY(0); }
+.alt-call { font-weight:800; font-size:12px; letter-spacing:.4px; }
+.alt-tg { display:inline-block; padding:4px 14px; border-radius:999px; font-weight:700; border:2px solid var(--chip-border); }
+.alt-muted { opacity:.55; }
+.alt-legend { font-size:14px; color:var(--text-muted); }
+
+/* -------- Node-Detail Blöcke -------- */
+.box { background: var(--bg); border:1px solid var(--btn-border); border-radius:10px; padding:12px; }
+.section-title { margin:6px 0 8px; font-size:15px; font-weight:700; display:flex; justify-content:space-between; align-items:center; }
+.list-inline { display:flex; gap:6px; flex-wrap:wrap; }
+.chip { display:inline-block; padding:2px 10px; border-radius:999px; border:1px solid var(--chip-border); background:var(--chip-bg); font-weight:600; }
+.chip-strong { font-weight:700; border-color:#60a5fa; background:rgba(96,165,250,.2); color:#60a5fa; }
+.toggle { font-size:12px; }
+
+/* -------- Leaflet Feinheiten (Farben an Theme binden) -------- */
+.leaflet-container a { color: var(--accent); }
+.leaflet-popup-content-wrapper { background: var(--bg-elev); color: var(--text); border:1px solid var(--border); }
+.leaflet-popup-tip { background: var(--bg-elev); }
+.lbl { background: rgba(0,0,0,0.6); color:#fff; padding:2px 4px; border-radius:4px; font-size:11px; }
+:root[data-theme="light"] .lbl { background: rgba(0,0,0,0.55); }
+
+
